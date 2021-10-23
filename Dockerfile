@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:latest
 ENV DEBIAN_FRONTEND noninteractive
 ENV LANG C.UTF-8
 
@@ -8,8 +8,6 @@ RUN apt-get update && apt-get install -y \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Setup SSH
-# https://docs.docker.com/engine/examples/running_ssh_service/
 EXPOSE 22
 RUN mkdir /var/run/sshd
 RUN sed -i 's/.*PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
